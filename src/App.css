@@ -1,0 +1,90 @@
+main{
+     display: grid;
+     grid-template-rows: 200px ;
+     grid-template-columns: 1fr 1fr;
+     grid-template-areas: 'aside section';
+     align-content: center;
+     height: 100vh;
+}
+
+main aside{
+      display: grid;
+     justify-items: center;
+     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     
+}
+
+main aside h1{
+    font-size: 40px;
+    font-weight: 400;
+}
+main aside h2{
+     font-weight: 200;
+}
+
+main aside form{
+    margin-top: 30px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap:10px;
+}
+
+main aside form label{
+    font-size: 15px;
+}
+
+main aside form label input{
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-left: 5px;
+}
+main aside form button{
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin: auto;
+    font-weight: 500;
+    background-color: black;
+    color: white;
+}
+main aside form button:hover{
+    background-color: white;
+    color: black;
+}
+
+main section{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+main section .list-elements{
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 1fr;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-items: start;
+
+}
+main section .list-elements h2{
+    font-size: 40px;
+    font-weight: 400;
+}
+main section .list-elements ul{
+    list-style: circle;
+    font-size: 20px;
+    font-weight: 200;
+}
+main section .img-element{
+    display: flex;
+
+}
+main section .img-element img {
+   width: 50%;
+   margin:auto;
+}
+
