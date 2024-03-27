@@ -1,8 +1,33 @@
+import { useState } from 'react'
 import './App.css'
 import logo from './assets/logo.svg'
 
-function App() {
+const INICIAL_ITEMS = [
+  
+  {
+    id: crypto.randomUUID(),
+    timestamp: Date.now(),
+    text: 'Video juegos',
+  },
+  {
+    id: crypto.randomUUID(),
+    timestamp: Date.now(),
+    text: 'Libros de programación',
+  },
+  {
+    id: crypto.randomUUID(),
+    timestamp: Date.now(),
+    text: 'Peliculas de accion',
+  },
+  {
+    id: crypto.randomUUID(),
+    timestamp: Date.now(),
+    text: 'Comprar un nuevo auto',
+  }
+]
 
+function App() {
+  const [items, setItems] = useState(INICIAL_ITEMS)
 
   return (
     <main>
@@ -22,18 +47,18 @@ function App() {
         </form>
       </aside>
       <section>
-        <div className='list-elements'>
           <h2>Elementos agregados</h2>
-          <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
+        <ul>
+          {
+             items.map((item) => (
+                  <li key={item.id}>{item.text}</li>
+             ))
+          }
           </ul>
-        </div> 
-        <div className='img-element'>
-           <img src={logo} alt="" />
-        </div>
       </section>
+      <article>
+           <img src={logo} alt="" /> 
+      </article>
     </main>
   )
 }
