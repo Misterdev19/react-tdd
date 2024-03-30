@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import logo from './assets/logo.svg'
+import { FaTrashCan } from "react-icons/fa6";
 
 const INICIAL_ITEMS = [
   
@@ -27,14 +28,42 @@ const INICIAL_ITEMS = [
 ]
 
 function App() {
-  const [items, setItems] = useState(INICIAL_ITEMS)
+  const [items, setItems] = useState(INICIAL_ITEMS);
+   
+  const hadleSutmit = (event) => {
+    
+    event.preventDefault()
+    const { elements } = event.currentTarget;
+    const input = elements.namedItem('item');
+    const isInput = input instanceof HTMLInputElement;
+    if(!isInput ||  input === null) return;
+    
+    const  newItem = {
+      id: crypto.randomUUID(),
+      timestamp: Date.now(),
+      text: input.value
+    }
+
+    setItems((prevItem) => {
+      return [...prevItem, newItem]
+    });
+
+    input.value = '';
+    
+  }
+
+  const deleteItem = (id) => {
+    setItems((prevItem) => {
+      return prevItem.filter((item) => item.id !== id)
+    })
+  }
 
   return (
     <main>
       <aside>
         <h1>Listado de elementos</h1>
           <h2>Añadir o eliminar elementos</h2>
-        <form action="">
+        <form onSubmit={hadleSutmit}>
           <label htmlFor="">
               Elemento a introducir:
             <input
@@ -48,13 +77,21 @@ function App() {
       </aside>
       <section>
           <h2>Elementos agregados</h2>
-        <ul>
           {
-             items.map((item) => (
-                  <li key={item.id}>{item.text}</li>
-             ))
+            items.length === 0 ? (
+              <p><strong>No hay elementos</strong></p>
+            ) : ( 
+              <ul>{
+                items.map((item) => (
+                  <li key={item.id}>{item.text}
+                    <button type='button' onClick={() => deleteItem(item.id)}>
+                      <FaTrashCan />
+                    </button>
+                  </li>
+                ))
+              }</ul>
+            )
           }
-          </ul>
       </section>
       <article>
            <img src={logo} alt="" /> 
