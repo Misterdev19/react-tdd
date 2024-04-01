@@ -7,6 +7,11 @@ import App from "../src/App";
 describe("</App>", () => {
 
     test("Prueba para App", () => {
-        render(<App/>);
+        render(<App />);
+
+        expect(
+            screen.getByText('Listado de elementos')
+        ).toBeDefined()
     })
+
 })
