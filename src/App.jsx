@@ -1,34 +1,34 @@
 import { useState } from 'react'
+import { ItemsElement } from './components/ItemsElement.jsx';
 import './App.css'
 import logo from './assets/logo.svg'
-import { FaTrashCan } from "react-icons/fa6";
 
-const INICIAL_ITEMS = [
-  
-  {
-    id: crypto.randomUUID(),
-    timestamp: Date.now(),
-    text: 'Video juegos',
-  },
-  {
-    id: crypto.randomUUID(),
-    timestamp: Date.now(),
-    text: 'Libros de programación',
-  },
-  {
-    id: crypto.randomUUID(),
-    timestamp: Date.now(),
-    text: 'Peliculas de accion',
-  },
-  {
-    id: crypto.randomUUID(),
-    timestamp: Date.now(),
-    text: 'Comprar un nuevo auto',
-  }
-]
+
+// const INICIAL_ITEMS = [
+//   {
+//     id: crypto.randomUUID(),
+//     timestamp: Date.now(),
+//     text: 'Video juegos',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     timestamp: Date.now(),
+//     text: 'Libros de programación',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     timestamp: Date.now(),
+//     text: 'Peliculas de accion',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     timestamp: Date.now(),
+//     text: 'Comprar un nuevo auto',
+//   }
+// ]
 
 function App() {
-  const [items, setItems] = useState(INICIAL_ITEMS);
+  const [items, setItems] = useState([]);
    
   const hadleSutmit = (event) => {
     
@@ -44,15 +44,17 @@ function App() {
       text: input.value
     }
 
+
     setItems((prevItem) => {
       return [...prevItem, newItem]
     });
-
+    
     input.value = '';
     
   }
 
   const deleteItem = (id) => {
+    console.log("delete item", id);
     setItems((prevItem) => {
       return prevItem.filter((item) => item.id !== id)
     })
@@ -63,7 +65,7 @@ function App() {
       <aside>
         <h1>Listado de elementos</h1>
           <h2>Añadir o eliminar elementos</h2>
-        <form onSubmit={hadleSutmit}>
+        <form onSubmit={hadleSutmit} aria-label='Form to add new item'>
           <label htmlFor="">
               Elemento a introducir:
             <input
@@ -75,21 +77,24 @@ function App() {
           <button>Añadir elemento a la lista</button>
         </form>
       </aside>
-      <section>
+      <section> 
           <h2>Elementos agregados</h2>
-          {
-            items.length === 0 ? (
+        {
+            items.length === 0  ? (
               <p><strong>No hay elementos</strong></p>
             ) : ( 
-              <ul>{
-                items.map((item) => (
-                  <li key={item.id}>{item.text}
-                    <button type='button' onClick={() => deleteItem(item.id)}>
-                      <FaTrashCan />
-                    </button>
-                  </li>
-                ))
-              }</ul>
+              <ul>
+                {
+                  items.map((item) => {
+                     return  <ItemsElement
+                        key={item.id}
+                        {...item}
+                        habdleClick={()=> deleteItem(item.id)}
+                    />
+                    
+                  })
+                }
+              </ul>
             )
           }
       </section>
