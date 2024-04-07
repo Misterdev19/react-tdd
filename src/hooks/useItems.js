@@ -1,5 +1,5 @@
 import { useState } from 'react'
-export const UserItems = () => {
+export const UseItems = () => {
     const [items, setItems] = useState([]);    
     
     const addItems =  (text) => {

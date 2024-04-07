@@ -1,12 +1,12 @@
 import { ItemsElement } from './components/ItemsElement.jsx';
 import './App.css'
 import logo from './assets/logo.svg'
-import { UserItems } from './hooks/userItems.js';
+import { UseItems } from './hooks/useItems.js';
 import { useSEO } from './hooks/userSEO.js';
 
 
 function App() {
-  const { items, addItems, removeItem } = UserItems();
+  const { items, addItems, removeItem } = UseItems();
   useSEO({
     title: `[${items.length}] Listado de elementos`,
     descripcion:'Listado de elementos de React'
