@@ -1,8 +1,11 @@
-# React + Vite
+# Testing whit react and vites
+this proyect is a practic  the testing a app in react 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Comenzando
+npm run dev whit run app mode dev 
+npm run test whit run test in  proyect/test/ 
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerrequisitos
+> react whit  vite
+> vites 
+> testing library  dom 
